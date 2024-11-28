@@ -53,7 +53,7 @@ const CustomCard = (props: CustomCardProps) => {
                 </div>
                 <div className='flex gap-1'>
                     <Image src='/call.svg' alt='archive' width={20} height={20}  />
-                    <span className='text-sm font-medium'>+{props.item.guarantor?.phone ?? ''}</span>
+                    <span className='text-sm font-medium'>{props.item.guarantor?.phone ?? ''}</span>
                 </div>
                 <div className='flex gap-1'>
                     <Image src='/manage_accounts.svg' alt='archive' width={20} height={20}  />
