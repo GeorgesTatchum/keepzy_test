@@ -1,12 +1,30 @@
-import { card_items } from "./models/data/card_items";
+"use client";
+
+import { CardItem } from "./models/types/CardITem";
 import Button from "./ui/Button";
 import CustomCard from "./ui/CustomCard";
 import InputDate from "./ui/InputDate";
 import InputSelect from "./ui/InputSelect";
 import InputText from "./ui/InputText";
 import SideBar from "./ui/SideBar";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [folderData, setFolderData] = useState<CardItem[]>([])
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('/api/data');
+      const data = await response.json();
+      setFolderData(data);
+      console.log("the data is", data);
+      
+    };
+    if (typeof window !== 'undefined') {
+      fetchData();
+    }
+    
+  }, []);
+  
   return (
     <div className="w-full h-[100dvh] flex">
       <SideBar />
@@ -62,8 +80,8 @@ export default function Home() {
             </div>
           </div>
         </form>
-        <div className="flex flex-col gap-6 items-start mt-4 pt-5 overflow-y-auto pr-2 pb-4 w-full">
-            {card_items.map((item, index) => (<><CustomCard item={item} key={item.reference + index}/></>))}
+        <div className="flex flex-col gap-6 items-start mt-4 pt-5 overflow-y-auto pr-2 pb-4 w-full" key={"testamentant"}>
+            {folderData.map((item, index) => (<><CustomCard item={item} key={item.reference + index}/></>))}
         </div>
       </div>
     </div>

@@ -17,7 +17,7 @@ const CustomCard = (props: CustomCardProps) => {
                 <span className='text-xs flex-2 font-medium italic'>Référence: {props.item.reference}</span>
                 <div className='flex flex-2 items-center text-center gap-1'>
                     <Image src='/calendar_month.svg' alt='archive' width={20} height={20}  />
-                    <span className='text-xs font-medium italic'>Date de la demande : {date_to_string(new Date(props.item.request_date)) }</span>
+                    <span className='text-xs font-medium italic'>Date de la demande : {date_to_string(props.item.request_date) }</span>
                 </div>
                 <div className={`px-4 py-1 rounded-lg border-2 ${props.item.status === 'complet' ? 'border-green-600 bg-green-300/20 text-green-600' : props.item.status === 'incomplet' ? 'border-yellow-600 bg-yellow-300/20 text-yellow-600' : 'border-red-600 bg-red-300/20 text-red-600'} text-center flex items-center`}>
                     <span className='text-sm uppercase font-semibold'>{props.item.status}</span>
